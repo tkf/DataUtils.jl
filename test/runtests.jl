@@ -1,6 +1,11 @@
-using DataUtils
+module TestDataUtils
+
 using Test
 
-@testset "DataUtils.jl" begin
-    # Write your own tests here.
+@testset "$file" for file in sort([
+    file for file in readdir(@__DIR__) if match(r"^test_.*\.jl$", file) !== nothing
+])
+    include(file)
 end
+
+end  # module

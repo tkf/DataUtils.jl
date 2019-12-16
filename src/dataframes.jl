@@ -3,6 +3,19 @@
 
 Robust table-to-`DataFrame` conversion.  Missing columns are filled
 with `missing`s.
+
+# Examples
+```jldoctest
+julia> using DataUtils: asdataframe
+
+julia> asdataframe([(a=1, b=2), (a=3,)])
+2×2 DataFrames.DataFrame
+│ Row │ a     │ b       │
+│     │ Int64 │ Int64⍰  │
+├─────┼───────┼─────────┤
+│ 1   │ 1     │ 2       │
+│ 2   │ 3     │ missing │
+```
 """
 asdataframe(df::DataFrames.AbstractDataFrame) = df
 function asdataframe(table::T) where {T}
@@ -66,6 +79,19 @@ Remove columns that are not usable in vega-lite.  It also renames
 column names with `.` and `-` to use `_` instead.
 
 See also: <https://github.com/queryverse/VegaLite.jl/pull/195>
+
+# Examples
+```jldoctest
+julia> using DataUtils
+
+julia> slimdataforvegalite([(a=1, b=2, c=Ref(0)), (a=3,)])
+2×2 DataFrames.DataFrame
+│ Row │ a     │ b       │
+│     │ Int64 │ Int64⍰  │
+├─────┼───────┼─────────┤
+│ 1   │ 1     │ 2       │
+│ 2   │ 3     │ missing │
+```
 """
 function slimdataforvegalite(table)
     df = asdataframe(table)

@@ -8,7 +8,7 @@ with `missing`s.
 ```jldoctest
 julia> using DataUtils: asdataframe
 
-julia> asdataframe([(a=1, b=2), (a=3,)])
+julia> asdataframe([(a=1, b=2), (a=3, b=2)])
 2×2 DataFrames.DataFrame
 │ Row │ a     │ b       │
 │     │ Int64 │ Int64⍰  │
@@ -84,7 +84,7 @@ See also: <https://github.com/queryverse/VegaLite.jl/pull/195>
 ```jldoctest
 julia> using DataUtils
 
-julia> slimdataforvegalite([(a=1, b=2, c=Ref(0)), (a=3,)])
+julia> slimdataforvegalite([(a=1, b=2, c=Ref(0)), (a=3, b=2)])
 2×2 DataFrames.DataFrame
 │ Row │ a     │ b       │
 │     │ Int64 │ Int64⍰  │

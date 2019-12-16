@@ -6,7 +6,7 @@ module DataUtils
     replace(read(path, String), r"^```julia"m => "```jldoctest README")
 end DataUtils
 
-export findallmatches, nonmissing, slimdataforvegalite
+export slimdataforvegalite
 
 import Tables
 using BangBang: append!!
